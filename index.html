@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; }
+        .form-group input { width: 100%; padding: 8px; box-sizing: border-box; }
+        .form-group button { padding: 10px 20px; }
+        #home, #letter, #song { display: none; }
+    </style>
+</head>
+<body>
+
+<div class="container" id="login">
+    <h2>Login</h2>
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+    </div>
+    <div class="form-group">
+        <label for="boyfriendName">Your Boyfriend's Name:</label>
+        <input type="text" id="boyfriendName" required>
+    </div>
+    <div class="form-group">
+        <button onclick="login()">Submit</button>
+    </div>
+</div>
+
+<div class="container" id="home">
+    <h2>Welcome Home</h2>
+    <button onclick="showPage('letter')">Letter</button>
+    <button onclick="showPage('song')">Song</button>
+</div>
+
+<div class="container" id="letter">
+    <h2>Letter from your boyfriend.</h2>
+    <p>Dear Isa, this is a special letter for you.</p>
+    <p>I'm happy that I can met you knowing you are an art student make me smile.</p>
+    <p>Isn't artt and programmer is such a good match?.</p>
+    <p>By the way, I'm happy that I can met you and feel loved by you.</p>
+    <p>I'm happy I can see you and loving you.</p>
+    <p>In short I just love you.</p>
+    <button onclick="showPage('home')">Home</button>
+</div>
+
+<div class="container" id="song">
+    <h2>Enjoy the Music</h2>
+    <p>Redirecting to Spotify...</p>
+</div>
+
+<script>
+    function login() {
+        var name = document.getElementById('name').value;
+        var boyfriendName = document.getElementById('boyfriendName').value;
+        if(name && boyfriendName) {
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('home').style.display = 'block';
+        } else {
+            alert('Please enter both your name and your boyfriend\'s name.');
+        }
+    }
+
+    function showPage(page) {
+        document.getElementById('home').style.display = 'none';
+        document.getElementById('letter').style.display = 'none';
+        document.getElementById('song').style.display = 'none';
+
+        if(page === 'letter') {
+            document.getElementById('letter').style.display = 'block';
+        } else if(page === 'song') {
+            document.getElementById('song').style.display = 'block';
+            setTimeout(function() {
+                window.location.href = 'https://open.spotify.com/playlist/29edVDx8cocJPsl1ik5YKv?si=knR3IG-LRLiNSYUIYouirg&pi=a-8Ov0ycheQgS3/';
+            }, 2000);
+        } else {
+            document.getElementById('home').style.display = 'block';
+        }
+    }
+</script>
+
+</body>
+</html>
